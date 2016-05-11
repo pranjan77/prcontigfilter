@@ -66,7 +66,7 @@ This sample module contains one small method - filter_contigs.
         if min_length < 0:
             raise ValueError('min_length parameter shouldn\'t be negative (' + str(min_length) + ')')
 
-         if 'max_length' not in params:
+        if 'max_length' not in params:
             raise ValueError('Parameter max_length is not set in input arguments')
         max_length_orig = params['min_length']
         max_length = None
