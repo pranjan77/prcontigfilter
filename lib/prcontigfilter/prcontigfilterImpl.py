@@ -65,7 +65,19 @@ This sample module contains one small method - filter_contigs.
             raise ValueError('Cannot parse integer from min_length parameter (' + str(min_length_orig) + ')')
         if min_length < 0:
             raise ValueError('min_length parameter shouldn\'t be negative (' + str(min_length) + ')')
+
+         if 'max_length' not in params:
+            raise ValueError('Parameter max_length is not set in input arguments')
+        max_length_orig = params['min_length']
+        max_length = None
+        try:
+            max_length = int(max_length_orig)
+        except ValueError:
+            raise ValueError('Cannot parse integer from max_length parameter (' + str(max_length_orig) + ')')
+        if max_length < 0:
+            raise ValueError('max_length parameter shouldn\'t be negative (' + str(max_length) + ')')
         
+       
 
         # Step 2- Download the input data
         # Most data will be based to your method by its workspace name.  Use the workspace to pull that data
@@ -93,7 +105,7 @@ This sample module contains one small method - filter_contigs.
         n_remaining = 0;
         for contig in contigSet['contigs']:
             n_total += 1
-            if len(contig['sequence']) >= min_length:
+            if len(contig['sequence']) >= min_length and len(contig['sequence']) <= min_length:
                 good_contigs.append(contig)
                 n_remaining += 1
 

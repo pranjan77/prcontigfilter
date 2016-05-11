@@ -18,6 +18,7 @@ module prcontigfilter {
         workspace_name workspace;
         contigset_id contigset_id;
         int min_length;
+        int max_length;
     } FilterContigsParams;
 
     /* 
